@@ -1,0 +1,29 @@
+unit MainForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.DBCtrls;
+
+type
+  TFormMain = class(TForm)
+    BtnMenuInput: TButton;
+    BtnShopInput: TButton;
+    DBComboBox1: TDBComboBox;
+    DBGrid1: TDBGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormMain: TFormMain;
+
+implementation
+
+{$R *.dfm}
+
+end.
