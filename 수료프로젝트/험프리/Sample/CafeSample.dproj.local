@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.044,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.490,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.874,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.540,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.467,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 15:43:41.526,=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 15:44:08.421,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\MainForm.pas=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 15:44:08.421,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\MainForm.dfm=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020.11.18 15:44:20.017,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\CafeSample.dproj=C:\Users\hjfac_000\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020.11.18 15:44:26.476,=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit2.pas</Transaction>
+    <Transaction>2020.11.18 15:44:37.119,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\MenuForm.dfm=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit2.dfm</Transaction>
+    <Transaction>2020.11.18 15:44:37.119,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\MenuForm.pas=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit2.pas</Transaction>
+    <Transaction>2020.11.18 15:47:07.879,=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 15:47:19.660,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\DBModule.pas=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 15:47:19.660,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\DBModule.dfm=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.dfm</Transaction>
+    <Transaction>2020.11.18 16:27:53.720,=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.pas</Transaction>
+    <Transaction>2020.11.18 16:27:59.599,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\ShopForm.dfm=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.dfm</Transaction>
+    <Transaction>2020.11.18 16:27:59.599,D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\ShopForm.pas=D:\Lectures\DelphiMaster\Master202010\수료프로젝트\험프리\Sample\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
