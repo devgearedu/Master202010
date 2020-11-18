@@ -1,0 +1,51 @@
+object frmMenu: TfrmMenu
+  Left = 0
+  Top = 0
+  Caption = #47700#45684#54268
+  ClientHeight = 421
+  ClientWidth = 596
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 24
+    Width = 553
+    Height = 193
+    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBEdit1: TDBEdit
+    Left = 208
+    Top = 240
+    Width = 121
+    Height = 21
+    TabOrder = 1
+  end
+  object DBEdit2: TDBEdit
+    Left = 208
+    Top = 280
+    Width = 121
+    Height = 21
+    TabOrder = 2
+  end
+  object btnAdd: TButton
+    Left = 104
+    Top = 336
+    Width = 113
+    Height = 49
+    Caption = #52628#44032
+    TabOrder = 3
+  end
+end

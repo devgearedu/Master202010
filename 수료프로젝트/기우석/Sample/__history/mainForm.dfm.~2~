@@ -1,0 +1,32 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 462
+  ClientWidth = 598
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object btnMenu: TButton
+    Left = 56
+    Top = 64
+    Width = 201
+    Height = 49
+    Caption = #47700#45684' '#46321#47197
+    TabOrder = 0
+  end
+  object btnShot: TButton
+    Left = 320
+    Top = 64
+    Width = 201
+    Height = 49
+    Caption = #51648#51216' '#46321#47197
+    TabOrder = 1
+  end
+end
