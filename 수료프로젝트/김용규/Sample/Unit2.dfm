@@ -66,4 +66,13 @@ object Form2: TForm2
     Height = 21
     TabOrder = 3
   end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 272
+    Top = 56
+  end
+  object FDQuery1: TFDQuery
+    Left = 368
+    Top = 72
+  end
 end
