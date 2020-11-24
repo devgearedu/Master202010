@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.029,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.016,D:\Dev\Delph\개인 프로젝트\mobile_source\Mobile_Project.dproj=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.902,D:\Dev\Delph\개인 프로젝트\mobile_source\MainForm.fmx=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.902,D:\Dev\Delph\개인 프로젝트\mobile_source\MainForm.pas=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

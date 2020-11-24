@@ -12,8 +12,8 @@ uses
 type
   Tdm = class(TDataModule)
     FDConnection1: TFDConnection;
-    Menu: TFDTable;
     MenuSource: TDataSource;
+    FDQuery1: TFDQuery;
   private
     { Private declarations }
   public

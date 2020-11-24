@@ -13,9 +13,10 @@ type
     btnAdd: TButton;
     btnSave: TButton;
     btnCancel: TButton;
-    DBEdit1: TDBEdit;
     lblMenuName: TLabel;
+    Edit1: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnSaveClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +29,13 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uDm;
+
+procedure TfrmMenu.btnSaveClick(Sender: TObject);
+begin
+  //post
+end;
 
 procedure TfrmMenu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

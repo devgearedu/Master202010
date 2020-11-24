@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.132,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.125,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.535,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.646,=C:\Users\Public\Documents\Embarcadero\Studio\20.0\Samples\Object Pascal\Multi-Device Samples\User Interface\MultiView\FMX.MultiView.CustomPresentation.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.098,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.684,=C:\Users\Public\Documents\Embarcadero\Studio\19.0\Samples\Object Pascal\Multi-Device Samples\User Interface\MultiView\FMX.MultiView.CustomPresentation.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.501,C:\Users\Public\Documents\Embarcadero\Studio\19.0\Samples\Object Pascal\Multi-Device Samples\User Interface\MultiView\FMX.MultiView.CustomPresentation.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.316,=C:\Users\Public\Documents\Embarcadero\Studio\19.0\Samples\Object Pascal\Multi-Device Samples\User Interface\MultiView\FMX.MultiView.CustomPresentation.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.537,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.348,=D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.072,D:\Dev\Delph\데브기어 교육\ios안드로이드\Multiview_Project.dproj=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.255,D:\Dev\Delph\데브기어 교육\ios안드로이드\MultiView.pas=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.255,D:\Dev\Delph\데브기어 교육\ios안드로이드\MultiView.fmx=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.011,D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\Unit2.pas=D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\CafeSales.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.743,C:\Users\Public\Documents\Embarcadero\Studio\20.0\Samples\Object Pascal\Multi-Device Samples\User Interface\MultiView\FMX.MultiView.CustomPresentation.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.842,=C:\Users\moto4\OneDrive\문서\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.011,D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\Unit2.fmx=D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\CafeSales.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.910,=D:\Dev\Delph\개인 프로젝트\mobile_source\모바일\Unit2.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

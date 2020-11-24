@@ -33,6 +33,8 @@ BEGIN
     new.SHOP_SEQ = gen_id(SHOP_SEQ_GEN, 1);
 END;
 
+
+
 /*지점별 메뉴*/
 CREATE TABLE SHOPMENU (
   SM_SEQ		INTEGER NOT NULL,

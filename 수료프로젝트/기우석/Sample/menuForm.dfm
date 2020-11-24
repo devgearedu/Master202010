@@ -59,6 +59,7 @@ object frmMenu: TfrmMenu
     Anchors = [akRight, akBottom]
     Caption = #51200#51109
     TabOrder = 2
+    OnClick = btnSaveClick
     ExplicitLeft = 320
     ExplicitTop = 336
   end
@@ -73,14 +74,12 @@ object frmMenu: TfrmMenu
     ExplicitLeft = 464
     ExplicitTop = 336
   end
-  object DBEdit1: TDBEdit
-    Left = 275
-    Top = 275
+  object Edit1: TEdit
+    Left = 248
+    Top = 270
     Width = 121
     Height = 21
-    Anchors = [akBottom]
     TabOrder = 4
-    ExplicitLeft = 296
-    ExplicitTop = 256
+    Text = 'Edit1'
   end
 end

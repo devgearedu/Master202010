@@ -9,14 +9,16 @@ object dm: Tdm
     Left = 72
     Top = 56
   end
-  object Menu: TFDTable
-    Connection = FDConnection1
-    Left = 72
+  object MenuSource: TDataSource
+    Left = 168
     Top = 136
   end
-  object MenuSource: TDataSource
-    DataSet = Menu
-    Left = 168
+  object FDQuery1: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM MENUS')
+    Left = 80
     Top = 136
   end
 end
