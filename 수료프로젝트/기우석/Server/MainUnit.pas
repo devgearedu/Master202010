@@ -7,7 +7,8 @@ uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   Vcl.StdCtrls;
 
 type
-  TForm1 = class(TForm)
+  TfrmMain = class(TForm)
+    Memo1: TMemo;
   private
     { Private declarations }
   public
@@ -15,7 +16,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmMain: TfrmMain;
 
 implementation
 

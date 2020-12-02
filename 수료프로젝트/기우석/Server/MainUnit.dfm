@@ -1,4 +1,4 @@
-object Form1: TForm1
+object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Form1'
@@ -13,4 +13,11 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object Memo1: TMemo
+    Left = 32
+    Top = 16
+    Width = 305
+    Height = 167
+    TabOrder = 0
+  end
 end

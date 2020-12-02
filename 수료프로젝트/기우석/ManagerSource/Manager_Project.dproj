@@ -103,40 +103,35 @@
         </DelphiCompile>
         <DCCReference Include="MainForm.pas">
             <Form>frmMain</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="MenuSalesForm.pas">
             <Form>frmMenuSales</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UpdatecafeForm.pas">
             <Form>frmUpdatecafe</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="AddstaffForm.pas">
             <Form>frmAddStaff</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="LoginForm.pas">
             <Form>frmLogin</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="UpdateStaffForm.pas">
             <Form>frmUpdateStaff</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="AddCafeForm.pas">
             <Form>frmAddCafe</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uDm.pas">
             <Form>DM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="uDatasnap_Client.pas"/>
         <DCCReference Include="SelectMenuForm.pas">
             <Form>frmSelectMenu</Form>
+        </DCCReference>
+        <DCCReference Include="CafeSalesForm.pas">
+            <Form>frmCafeSales</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
