@@ -1,0 +1,52 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = #47700#51064#54268
+  ClientHeight = 330
+  ClientWidth = 419
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object BtnMenuInput: TButton
+    Left = 40
+    Top = 40
+    Width = 137
+    Height = 57
+    Caption = #47700#45684#46321#47197
+    TabOrder = 0
+  end
+  object BtnShopInput: TButton
+    Left = 232
+    Top = 40
+    Width = 137
+    Height = 57
+    Caption = #51648#51216#46321#47197
+    TabOrder = 1
+  end
+  object DBComboBox1: TDBComboBox
+    Left = 40
+    Top = 128
+    Width = 137
+    Height = 21
+    TabOrder = 2
+  end
+  object DBGrid1: TDBGrid
+    Left = 40
+    Top = 168
+    Width = 329
+    Height = 137
+    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 3
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+end
