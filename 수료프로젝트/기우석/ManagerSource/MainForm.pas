@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ToolWin, Vcl.ComCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.StdCtrls, Vcl.Buttons;
+  System.ImageList, Vcl.ImgList, Vcl.StdCtrls, Vcl.Buttons, Vcl.Menus,
+  uDatasnap_Client;
 
 type
   TfrmMain = class(TForm)
@@ -14,22 +15,35 @@ type
     btnMenuSales: TBitBtn;
     btnAddStaff: TBitBtn;
     btnUpdateCafe: TBitBtn;
-    btnLogin: TBitBtn;
     btnUpdateStaff: TBitBtn;
     btnAddCafe: TBitBtn;
     BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    MainMenu1: TMainMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    StatusBar1: TStatusBar;
     procedure btnCloseClick(Sender: TObject);
     procedure btnMenuSalesClick(Sender: TObject);
     procedure btnAddStaffClick(Sender: TObject);
     procedure btnUpdateCafeClick(Sender: TObject);
     procedure btnUpdateStaffClick(Sender: TObject);
-    procedure btnLoginClick(Sender: TObject);
     procedure btnAddCafeClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    cafeClass: TServerMethods1Client;
   end;
 
 var
@@ -40,7 +54,7 @@ implementation
 {$R *.dfm}
 
 uses MenuSalesForm, UpdatecafeForm, AddstaffForm, LoginForm,
-  UpdateStaffForm, AddCafeForm, SelectMenuForm;
+  UpdateStaffForm, AddCafeForm, SelectMenuForm, CafeSalesForm, uDm;
 
 procedure TfrmMain.BitBtn1Click(Sender: TObject);
 begin
@@ -52,6 +66,15 @@ begin
     frmSelectMenu.Free;
     frmSelectMenu := Nil;
   end;
+end;
+
+procedure TfrmMain.BitBtn2Click(Sender: TObject);
+begin
+  if not Assigned(frmCafeSales) then
+    begin
+      frmCafeSales := TfrmCafeSales.Create(Self);
+    end;
+    frmCafeSales.Show;
 end;
 
 procedure TfrmMain.btnAddCafeClick(Sender: TObject);
@@ -77,18 +100,51 @@ begin
     frmMenuSales.Show;
 end;
 
-procedure TfrmMain.btnLoginClick(Sender: TObject);
-begin
-  frmLogin := TfrmLogin.Create(Self);
-  frmLogin.ShowModal;
-  FreeAndNil(frmLogin);
-end;
-
 procedure TfrmMain.btnUpdateStaffClick(Sender: TObject);
 begin
   frmUpdateStaff := TfrmUpdateStaff.Create(Self);
   frmUpdateStaff.ShowModal;
   FreeAndNil(frmUpdateStaff);
+end;
+
+procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  action := caFree;
+  frmMain := nil;
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  cafeClass := TServerMethods1Client.Create(DM.SQLConnection1.DBXConnection);
+
+  frmLogin := TfrmLogin.Create(Self);
+  frmLogin.ShowModal;
+  if frmLogin.ModalResult <> mrOK then
+  begin
+    //frmLogin.Free;
+    frmLogin.Close;
+    Application.Terminate;
+  end;
+
+  //if FCAFECODE then
+
+
+
+end;
+
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  StatusBar1.Panels[0].Text := '현재 사용자 : ' + FEMPNAME;
+
+  if FCAFECODE <> '01' then
+  begin
+    btnAddCafe.Enabled := False;
+    btnUpdateCafe.Enabled := False;
+  end;
+
+
+
 end;
 
 procedure TfrmMain.btnUpdateCafeClick(Sender: TObject);
@@ -106,7 +162,7 @@ end;
 
 procedure TfrmMain.btnCloseClick(Sender: TObject);
 begin
-  Close;
+  Application.Terminate;
 end;
 
 end.

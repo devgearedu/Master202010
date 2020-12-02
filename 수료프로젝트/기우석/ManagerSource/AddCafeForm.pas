@@ -56,8 +56,8 @@ begin
       str := copy(str, 1, Length(str) - 1);
 
     cafeClass.AddCafe(edtCafename.Text, edtPhone.Text, str);
-    //ShowMessage('저장 완료');
     Close;
+
   end;
 
 end;

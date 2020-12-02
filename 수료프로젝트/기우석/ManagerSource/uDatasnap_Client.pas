@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2020-11-24 오후 11:15:36
+// 2020-12-02 오전 11:26:31
 //
 
 unit uDatasnap_Client;
@@ -13,25 +13,43 @@ type
   TServerMethods1Client = class(TDSAdminClient)
   private
     FDSServerModuleCreateCommand: TDBXCommand;
+    FqryCafeCalcFieldsCommand: TDBXCommand;
     FEchoStringCommand: TDBXCommand;
     FReverseStringCommand: TDBXCommand;
     FAddCafeCommand: TDBXCommand;
     FAddStaffCommand: TDBXCommand;
-    FGetCafelistCommand: TDBXCommand;
     FUpdateCafeCommand: TDBXCommand;
+    FUpdateStaffCommand: TDBXCommand;
     FGetSelectedMenuCommand: TDBXCommand;
+    FLoginidpwCommand: TDBXCommand;
+    FGetMenulistCommand: TDBXCommand;
+    FGetMenuPriceCommand: TDBXCommand;
+    FGetCafeMenulistCommand: TDBXCommand;
+    FSaveSalesCommand: TDBXCommand;
+    FSaveSalesDetailCommand: TDBXCommand;
+    FGetCafeListCommand: TDBXCommand;
+    FGetStaffPositionListCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
     procedure DSServerModuleCreate(Sender: TObject);
+    procedure qryCafeCalcFields(DataSet: TDataSet);
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     procedure AddCafe(pcafename: string; pphone: string; pCafemenu: string);
     procedure AddStaff(pcafecode: string; psname: string; pId: string; ppassword: string; pempdate: string; pposition: string; pempyear: Integer);
-    function GetCafelist: string;
-    procedure UpdateCafe(pCafecode: string; pCafename: string; pPhone: string);
-    function GetSelectedMenu(pcafecode: string): string;
+    procedure UpdateCafe(pCafecode: string; pCafename: string; pPhone: string; pClosed: string);
+    procedure UpdateStaff(pname: string; pcafecode: string; pposition: string; ponwork: string; pempcode: string);
+    function GetSelectedMenu(pcafecode: string; pcafemenu: string): string;
+    function Loginidpw(pid: string; ppassword: string): string;
+    function GetMenulist: string;
+    function GetMenuPrice(pmenuname: string): Integer;
+    function GetCafeMenulist(pcafecode: string): TDataSet;
+    function SaveSales(pdate: string; ptime: string; pcafecode: string; pposno: string; psaleprice: Double): string;
+    procedure SaveSalesDetail(pcafecode: string; slipno: string; pmenucode: string; punitprice: Integer; pcount: Integer; pmenutotal: Double);
+    function GetCafeList: string;
+    function GetStaffPositionList(pcafecode: string; pposition: string): Integer;
   end;
 
 implementation
@@ -59,6 +77,19 @@ begin
     end
     end;
   FDSServerModuleCreateCommand.ExecuteUpdate;
+end;
+
+procedure TServerMethods1Client.qryCafeCalcFields(DataSet: TDataSet);
+begin
+  if FqryCafeCalcFieldsCommand = nil then
+  begin
+    FqryCafeCalcFieldsCommand := FDBXConnection.CreateCommand;
+    FqryCafeCalcFieldsCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FqryCafeCalcFieldsCommand.Text := 'TServerMethods1.qryCafeCalcFields';
+    FqryCafeCalcFieldsCommand.Prepare;
+  end;
+  FqryCafeCalcFieldsCommand.Parameters[0].Value.SetDBXReader(TDBXDataSetReader.Create(DataSet, FInstanceOwner), True);
+  FqryCafeCalcFieldsCommand.ExecuteUpdate;
 end;
 
 function TServerMethods1Client.EchoString(Value: string): string;
@@ -123,20 +154,7 @@ begin
   FAddStaffCommand.ExecuteUpdate;
 end;
 
-function TServerMethods1Client.GetCafelist: string;
-begin
-  if FGetCafelistCommand = nil then
-  begin
-    FGetCafelistCommand := FDBXConnection.CreateCommand;
-    FGetCafelistCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FGetCafelistCommand.Text := 'TServerMethods1.GetCafelist';
-    FGetCafelistCommand.Prepare;
-  end;
-  FGetCafelistCommand.ExecuteUpdate;
-  Result := FGetCafelistCommand.Parameters[0].Value.GetWideString;
-end;
-
-procedure TServerMethods1Client.UpdateCafe(pCafecode: string; pCafename: string; pPhone: string);
+procedure TServerMethods1Client.UpdateCafe(pCafecode: string; pCafename: string; pPhone: string; pClosed: string);
 begin
   if FUpdateCafeCommand = nil then
   begin
@@ -148,10 +166,28 @@ begin
   FUpdateCafeCommand.Parameters[0].Value.SetWideString(pCafecode);
   FUpdateCafeCommand.Parameters[1].Value.SetWideString(pCafename);
   FUpdateCafeCommand.Parameters[2].Value.SetWideString(pPhone);
+  FUpdateCafeCommand.Parameters[3].Value.SetWideString(pClosed);
   FUpdateCafeCommand.ExecuteUpdate;
 end;
 
-function TServerMethods1Client.GetSelectedMenu(pcafecode: string): string;
+procedure TServerMethods1Client.UpdateStaff(pname: string; pcafecode: string; pposition: string; ponwork: string; pempcode: string);
+begin
+  if FUpdateStaffCommand = nil then
+  begin
+    FUpdateStaffCommand := FDBXConnection.CreateCommand;
+    FUpdateStaffCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FUpdateStaffCommand.Text := 'TServerMethods1.UpdateStaff';
+    FUpdateStaffCommand.Prepare;
+  end;
+  FUpdateStaffCommand.Parameters[0].Value.SetWideString(pname);
+  FUpdateStaffCommand.Parameters[1].Value.SetWideString(pcafecode);
+  FUpdateStaffCommand.Parameters[2].Value.SetWideString(pposition);
+  FUpdateStaffCommand.Parameters[3].Value.SetWideString(ponwork);
+  FUpdateStaffCommand.Parameters[4].Value.SetWideString(pempcode);
+  FUpdateStaffCommand.ExecuteUpdate;
+end;
+
+function TServerMethods1Client.GetSelectedMenu(pcafecode: string; pcafemenu: string): string;
 begin
   if FGetSelectedMenuCommand = nil then
   begin
@@ -161,8 +197,132 @@ begin
     FGetSelectedMenuCommand.Prepare;
   end;
   FGetSelectedMenuCommand.Parameters[0].Value.SetWideString(pcafecode);
+  FGetSelectedMenuCommand.Parameters[1].Value.SetWideString(pcafemenu);
   FGetSelectedMenuCommand.ExecuteUpdate;
-  Result := FGetSelectedMenuCommand.Parameters[1].Value.GetWideString;
+  Result := FGetSelectedMenuCommand.Parameters[2].Value.GetWideString;
+end;
+
+function TServerMethods1Client.Loginidpw(pid: string; ppassword: string): string;
+begin
+  if FLoginidpwCommand = nil then
+  begin
+    FLoginidpwCommand := FDBXConnection.CreateCommand;
+    FLoginidpwCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FLoginidpwCommand.Text := 'TServerMethods1.Loginidpw';
+    FLoginidpwCommand.Prepare;
+  end;
+  FLoginidpwCommand.Parameters[0].Value.SetWideString(pid);
+  FLoginidpwCommand.Parameters[1].Value.SetWideString(ppassword);
+  FLoginidpwCommand.ExecuteUpdate;
+  Result := FLoginidpwCommand.Parameters[2].Value.GetWideString;
+end;
+
+function TServerMethods1Client.GetMenulist: string;
+begin
+  if FGetMenulistCommand = nil then
+  begin
+    FGetMenulistCommand := FDBXConnection.CreateCommand;
+    FGetMenulistCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FGetMenulistCommand.Text := 'TServerMethods1.GetMenulist';
+    FGetMenulistCommand.Prepare;
+  end;
+  FGetMenulistCommand.ExecuteUpdate;
+  Result := FGetMenulistCommand.Parameters[0].Value.GetWideString;
+end;
+
+function TServerMethods1Client.GetMenuPrice(pmenuname: string): Integer;
+begin
+  if FGetMenuPriceCommand = nil then
+  begin
+    FGetMenuPriceCommand := FDBXConnection.CreateCommand;
+    FGetMenuPriceCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FGetMenuPriceCommand.Text := 'TServerMethods1.GetMenuPrice';
+    FGetMenuPriceCommand.Prepare;
+  end;
+  FGetMenuPriceCommand.Parameters[0].Value.SetWideString(pmenuname);
+  FGetMenuPriceCommand.ExecuteUpdate;
+  Result := FGetMenuPriceCommand.Parameters[1].Value.GetInt32;
+end;
+
+function TServerMethods1Client.GetCafeMenulist(pcafecode: string): TDataSet;
+begin
+  if FGetCafeMenulistCommand = nil then
+  begin
+    FGetCafeMenulistCommand := FDBXConnection.CreateCommand;
+    FGetCafeMenulistCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FGetCafeMenulistCommand.Text := 'TServerMethods1.GetCafeMenulist';
+    FGetCafeMenulistCommand.Prepare;
+  end;
+  FGetCafeMenulistCommand.Parameters[0].Value.SetWideString(pcafecode);
+  FGetCafeMenulistCommand.ExecuteUpdate;
+  Result := TCustomSQLDataSet.Create(nil, FGetCafeMenulistCommand.Parameters[1].Value.GetDBXReader(False), True);
+  Result.Open;
+  if FInstanceOwner then
+    FGetCafeMenulistCommand.FreeOnExecute(Result);
+end;
+
+function TServerMethods1Client.SaveSales(pdate: string; ptime: string; pcafecode: string; pposno: string; psaleprice: Double): string;
+begin
+  if FSaveSalesCommand = nil then
+  begin
+    FSaveSalesCommand := FDBXConnection.CreateCommand;
+    FSaveSalesCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSaveSalesCommand.Text := 'TServerMethods1.SaveSales';
+    FSaveSalesCommand.Prepare;
+  end;
+  FSaveSalesCommand.Parameters[0].Value.SetWideString(pdate);
+  FSaveSalesCommand.Parameters[1].Value.SetWideString(ptime);
+  FSaveSalesCommand.Parameters[2].Value.SetWideString(pcafecode);
+  FSaveSalesCommand.Parameters[3].Value.SetWideString(pposno);
+  FSaveSalesCommand.Parameters[4].Value.SetDouble(psaleprice);
+  FSaveSalesCommand.ExecuteUpdate;
+  Result := FSaveSalesCommand.Parameters[5].Value.GetWideString;
+end;
+
+procedure TServerMethods1Client.SaveSalesDetail(pcafecode: string; slipno: string; pmenucode: string; punitprice: Integer; pcount: Integer; pmenutotal: Double);
+begin
+  if FSaveSalesDetailCommand = nil then
+  begin
+    FSaveSalesDetailCommand := FDBXConnection.CreateCommand;
+    FSaveSalesDetailCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSaveSalesDetailCommand.Text := 'TServerMethods1.SaveSalesDetail';
+    FSaveSalesDetailCommand.Prepare;
+  end;
+  FSaveSalesDetailCommand.Parameters[0].Value.SetWideString(pcafecode);
+  FSaveSalesDetailCommand.Parameters[1].Value.SetWideString(slipno);
+  FSaveSalesDetailCommand.Parameters[2].Value.SetWideString(pmenucode);
+  FSaveSalesDetailCommand.Parameters[3].Value.SetInt32(punitprice);
+  FSaveSalesDetailCommand.Parameters[4].Value.SetInt32(pcount);
+  FSaveSalesDetailCommand.Parameters[5].Value.SetDouble(pmenutotal);
+  FSaveSalesDetailCommand.ExecuteUpdate;
+end;
+
+function TServerMethods1Client.GetCafeList: string;
+begin
+  if FGetCafeListCommand = nil then
+  begin
+    FGetCafeListCommand := FDBXConnection.CreateCommand;
+    FGetCafeListCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FGetCafeListCommand.Text := 'TServerMethods1.GetCafeList';
+    FGetCafeListCommand.Prepare;
+  end;
+  FGetCafeListCommand.ExecuteUpdate;
+  Result := FGetCafeListCommand.Parameters[0].Value.GetWideString;
+end;
+
+function TServerMethods1Client.GetStaffPositionList(pcafecode: string; pposition: string): Integer;
+begin
+  if FGetStaffPositionListCommand = nil then
+  begin
+    FGetStaffPositionListCommand := FDBXConnection.CreateCommand;
+    FGetStaffPositionListCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FGetStaffPositionListCommand.Text := 'TServerMethods1.GetStaffPositionList';
+    FGetStaffPositionListCommand.Prepare;
+  end;
+  FGetStaffPositionListCommand.Parameters[0].Value.SetWideString(pcafecode);
+  FGetStaffPositionListCommand.Parameters[1].Value.SetWideString(pposition);
+  FGetStaffPositionListCommand.ExecuteUpdate;
+  Result := FGetStaffPositionListCommand.Parameters[2].Value.GetInt32;
 end;
 
 
@@ -181,13 +341,22 @@ end;
 destructor TServerMethods1Client.Destroy;
 begin
   FDSServerModuleCreateCommand.DisposeOf;
+  FqryCafeCalcFieldsCommand.DisposeOf;
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   FAddCafeCommand.DisposeOf;
   FAddStaffCommand.DisposeOf;
-  FGetCafelistCommand.DisposeOf;
   FUpdateCafeCommand.DisposeOf;
+  FUpdateStaffCommand.DisposeOf;
   FGetSelectedMenuCommand.DisposeOf;
+  FLoginidpwCommand.DisposeOf;
+  FGetMenulistCommand.DisposeOf;
+  FGetMenuPriceCommand.DisposeOf;
+  FGetCafeMenulistCommand.DisposeOf;
+  FSaveSalesCommand.DisposeOf;
+  FSaveSalesDetailCommand.DisposeOf;
+  FGetCafeListCommand.DisposeOf;
+  FGetStaffPositionListCommand.DisposeOf;
   inherited;
 end;
 

@@ -1,7 +1,7 @@
 object ServerMethods1: TServerMethods1
   OldCreateOrder = False
   OnCreate = DSServerModuleCreate
-  Height = 541
+  Height = 829
   Width = 1119
   object FDConnection1: TFDConnection
     Params.Strings = (
@@ -19,8 +19,8 @@ object ServerMethods1: TServerMethods1
   object qryAddCafe: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'insert into cafe (cafecode, cafename, phone, cafemenu)'
-      'values (:cafecode, :cafename, :phone, :cafemenu);')
+      'insert into cafe (cafecode, cafename, phone, open)'
+      'values (:cafecode, :cafename, :phone, :open);')
     Left = 64
     Top = 144
     ParamData = <
@@ -38,7 +38,7 @@ object ServerMethods1: TServerMethods1
         ParamType = ptInput
       end
       item
-        Name = 'CAFEMENU'
+        Name = 'OPEN'
         ParamType = ptInput
       end>
   end
@@ -47,10 +47,10 @@ object ServerMethods1: TServerMethods1
     SQL.Strings = (
       
         'insert into staff (empcode, empdate, id, password, position, caf' +
-        'ecode, nyear, nseq, sname)'
+        'ecode, nyear, nseq, sname, onwork)'
       
         'values (:empcode, :empdate, :id, :password, :position, :cafecode' +
-        ', :nyear, :nseq, :sname)')
+        ', :nyear, :nseq, :sname, :onwork)')
     Left = 160
     Top = 144
     ParamData = <
@@ -105,6 +105,10 @@ object ServerMethods1: TServerMethods1
       item
         Name = 'SNAME'
         ParamType = ptInput
+      end
+      item
+        Name = 'ONWORK'
+        ParamType = ptInput
       end>
   end
   object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
@@ -130,14 +134,13 @@ object ServerMethods1: TServerMethods1
   object qryGetCafelist: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select cafecode, cafename from cafe '
-      'order by cafecode;')
+      '')
     Left = 272
     Top = 144
   end
   object DataSetProvider1: TDataSetProvider
     DataSet = qryCafe
-    Left = 160
+    Left = 144
     Top = 360
   end
   object tbStaff: TFDTable
@@ -201,18 +204,31 @@ object ServerMethods1: TServerMethods1
       Origin = 'sname'
       Required = True
     end
+    object tbStaffonwork: TWideStringField
+      FieldName = 'onwork'
+      Origin = 'onwork'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object tbStaffposition_name: TWideStringField
+      FieldKind = fkCalculated
+      FieldName = 'position_name'
+      Calculated = True
+    end
   end
   object DataSetProvider2: TDataSetProvider
     DataSet = tbStaff
-    Left = 160
+    Left = 144
     Top = 448
   end
   object qryCafe: TFDQuery
+    OnCalcFields = qryCafeCalcFields
     Connection = FDConnection1
     SQL.Strings = (
       
         'select A.cafecode, A.cafename, A.phone, ifnull(B.position, '#39#39') a' +
-        's pposition, B.sname from cafe as A'#10
+        's pposition, B.sname, A.closed from cafe as A'#10
       'left join staff as B'
       #10'on B.cafecode = A.cafecode and B.position = '#39'1'#39
       'order by A.cafecode;')
@@ -252,41 +268,346 @@ object ServerMethods1: TServerMethods1
       ProviderFlags = []
       ReadOnly = True
     end
+    object qryCafeclosed: TWideStringField
+      FieldName = 'closed'
+      Origin = 'closed'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object qryCafeclosed_yn: TWideStringField
+      FieldKind = fkCalculated
+      FieldName = 'closed_yn'
+      Calculated = True
+    end
   end
   object qryUpdatecafe: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'update cafe set cafename = :cafename, phone = :phone '
+      
+        'update cafe set cafename = :cafename, phone = :phone, closed = :' +
+        'closed '
       'where cafecode = :cafecode')
     Left = 248
     Top = 360
     ParamData = <
       item
         Name = 'CAFENAME'
+        DataType = ftString
         ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'PHONE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'CLOSED'
         ParamType = ptInput
       end
       item
         Name = 'CAFECODE'
+        DataType = ftString
         ParamType = ptInput
+        Value = Null
       end>
   end
   object qrySelectMenu: TFDQuery
     Connection = FDConnection1
+    Left = 416
+    Top = 384
+  end
+  object qryLogin: TFDQuery
+    Connection = FDConnection1
+    Left = 432
+    Top = 24
+  end
+  object qryPosMenu: TFDQuery
+    Connection = FDConnection1
+    Left = 720
+    Top = 40
+  end
+  object qryMenuPrice: TFDQuery
+    Connection = FDConnection1
+    Left = 800
+    Top = 40
+  end
+  object qryGetMenulist: TFDQuery
+    Connection = FDConnection1
+    Left = 720
+    Top = 208
+  end
+  object qrySalesReport: TFDQuery
+    Connection = FDConnection1
     SQL.Strings = (
-      'select cafemenu from cafe'
-      'where cafecode = :cafecode;')
-    Left = 536
-    Top = 368
+      'select * from sales_master'
+      'where cafecode = :cafecode and sdate = :sdate')
+    Left = 720
+    Top = 128
     ParamData = <
+      item
+        Name = 'CAFECODE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = '01'
+      end
+      item
+        Name = 'SDATE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = '20201126'
+      end>
+    object qrySalesReportcafecode: TWideStringField
+      FieldName = 'cafecode'
+      Origin = 'cafecode'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      FixedChar = True
+      Size = 2
+    end
+    object qrySalesReportslipno: TWideStringField
+      FieldName = 'slipno'
+      Origin = 'slipno'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 12
+    end
+    object qrySalesReportseq: TIntegerField
+      FieldName = 'seq'
+      Origin = 'seq'
+      Required = True
+    end
+    object qrySalesReportsdate: TWideStringField
+      FieldName = 'sdate'
+      Origin = 'sdate'
+      Required = True
+      Size = 8
+    end
+    object qrySalesReportstime: TWideStringField
+      FieldName = 'stime'
+      Origin = 'stime'
+      Required = True
+      Size = 6
+    end
+    object qrySalesReportposno: TWideStringField
+      FieldName = 'posno'
+      Origin = 'posno'
+      Required = True
+      FixedChar = True
+      Size = 2
+    end
+    object qrySalesReportsaleprice: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'saleprice'
+      Origin = 'saleprice'
+    end
+    object qrySalesReportvat: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'vat'
+      Origin = 'vat'
+    end
+    object qrySalesReportsales: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'sales'
+      Origin = 'sales'
+    end
+  end
+  object dspSalesReport: TDataSetProvider
+    DataSet = qrySalesReport
+    Left = 800
+    Top = 128
+  end
+  object qrySaveSales: TFDQuery
+    Connection = FDConnection1
+    Left = 720
+    Top = 288
+  end
+  object qryCommon: TFDQuery
+    Connection = FDConnection1
+    Left = 520
+    Top = 240
+  end
+  object qrySaveSales_detail: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'insert into sales_detail (cafecode, slipno, seq, menucode, unitp' +
+        'rice, count, menutotal)'
+      
+        'values (:cafecode, :slipno, :seq, :menucode, :unitprice, :count,' +
+        ' :menutotal)')
+    Left = 720
+    Top = 352
+    ParamData = <
+      item
+        Name = 'CAFECODE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'SLIPNO'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'SEQ'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MENUCODE'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'UNITPRICE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'COUNT'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'MENUTOTAL'
+        DataType = ftCurrency
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object dspSaveSales_detail: TDataSetProvider
+    DataSet = qrySaveSales_detail
+    Left = 824
+    Top = 352
+  end
+  object qryUpdateStaff: TFDQuery
+    Connection = FDConnection1
+    Left = 256
+    Top = 448
+  end
+  object qrySalesList: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select sum(saleprice), sdate from sales_master '
+      #10'where sdate >= :sdate '
+      #10'group by sdate')
+    Left = 344
+    Top = 600
+    ParamData = <
+      item
+        Name = 'SDATE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '20201126'
+      end>
+  end
+  object dspSalesList: TDataSetProvider
+    DataSet = qrySalesList
+    Left = 432
+    Top = 600
+  end
+  object dspSalesTotal: TDataSetProvider
+    DataSet = qrySalesTotal
+    Left = 208
+    Top = 560
+  end
+  object qryStaffPositionList: TFDQuery
+    Connection = FDConnection1
+    Left = 80
+    Top = 696
+  end
+  object qrySalesTotal: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select sdate, sum(saleprice) salesum from sales_master'
+      'where sdate >= :sdatefrom and sdate <= :sdateto'
+      'group by sdate')
+    Left = 88
+    Top = 560
+    ParamData = <
+      item
+        Name = 'SDATEFROM'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '20201123'
+      end
+      item
+        Name = 'SDATETO'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '20201201'
+      end>
+    object qrySalesTotalsdate: TWideStringField
+      FieldName = 'sdate'
+      Origin = 'sdate'
+      Required = True
+      Size = 8
+    end
+    object qrySalesTotalsalesum: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'salesum'
+      Origin = 'salesum'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object qrySalesTotalByCafe: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select sdate, sum(saleprice) salesum from sales_master'
+      
+        'where sdate >= :sdatefrom and sdate <= :sdateto and cafecode = :' +
+        'cafecode'
+      'group by sdate')
+    Left = 88
+    Top = 616
+    ParamData = <
+      item
+        Name = 'SDATEFROM'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '20201123'
+      end
+      item
+        Name = 'SDATETO'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '20201201'
+      end
       item
         Name = 'CAFECODE'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '03'
+        Value = '01'
       end>
+    object qrySalesTotalByCafesdate: TWideStringField
+      FieldName = 'sdate'
+      Origin = 'sdate'
+      Required = True
+      Size = 8
+    end
+    object qrySalesTotalByCafesalesum: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'salesum'
+      Origin = 'salesum'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object dspSalesTotalByCafe: TDataSetProvider
+    DataSet = qrySalesTotalByCafe
+    Left = 208
+    Top = 624
   end
 end

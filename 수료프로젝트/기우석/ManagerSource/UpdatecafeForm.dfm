@@ -11,6 +11,7 @@ object frmUpdatecafe: TfrmUpdatecafe
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -37,20 +38,22 @@ object frmUpdatecafe: TfrmUpdatecafe
       object Label4: TLabel
         Left = 40
         Top = 25
-        Width = 47
+        Width = 58
         Height = 13
-        Caption = #51648#51216' '#44160#49353
+        Caption = #51648#51216#47749' '#44160#49353
       end
-      object Edit4: TEdit
+      object edtSearchCafe: TEdit
         Left = 112
         Top = 22
-        Width = 294
+        Width = 254
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
+        OnKeyPress = edtSearchCafeKeyPress
+        OnKeyUp = edtSearchCafeKeyUp
       end
-      object BitBtn1: TBitBtn
-        Left = 381
+      object btnSearch: TBitBtn
+        Left = 341
         Top = 20
         Width = 25
         Height = 25
@@ -102,6 +105,7 @@ object frmUpdatecafe: TfrmUpdatecafe
           001010104343439E9E9EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00}
         Layout = blGlyphTop
         TabOrder = 1
+        OnClick = btnSearchClick
       end
     end
     object DBGrid1: TDBGrid
@@ -122,17 +126,20 @@ object frmUpdatecafe: TfrmUpdatecafe
         item
           Expanded = False
           FieldName = 'cafecode'
+          Title.Caption = #51648#51216#53076#46300
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'cafename'
-          Width = 50
+          Title.Caption = #51648#51216#47749
+          Width = 100
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'phone'
+          Title.Caption = #51204#54868#48264#54840
           Visible = True
         end
         item
@@ -143,7 +150,20 @@ object frmUpdatecafe: TfrmUpdatecafe
         item
           Expanded = False
           FieldName = 'sname'
+          Title.Caption = #45824#54364#51088
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'closed'
+          Visible = False
+        end
+        item
+          Expanded = False
+          FieldName = 'closed_yn'
           ReadOnly = False
+          Title.Caption = #50689#50629#50668#48512
+          Width = 60
           Visible = True
         end>
     end
@@ -155,7 +175,6 @@ object frmUpdatecafe: TfrmUpdatecafe
     Height = 511
     Align = alRight
     TabOrder = 1
-    ExplicitLeft = 610
     object Label1: TLabel
       Left = 31
       Top = 80
@@ -179,20 +198,12 @@ object frmUpdatecafe: TfrmUpdatecafe
     end
     object btnSave: TButton
       Left = 32
-      Top = 235
+      Top = 267
       Width = 185
       Height = 25
       Caption = #51200#51109
       TabOrder = 0
       OnClick = btnSaveClick
-    end
-    object btnCafestop: TButton
-      Left = 32
-      Top = 285
-      Width = 185
-      Height = 25
-      Caption = #50689#50629' '#51221#51648
-      TabOrder = 1
     end
     object dbedtManager: TDBEdit
       Left = 96
@@ -203,7 +214,7 @@ object frmUpdatecafe: TfrmUpdatecafe
       DataSource = dsCafe
       Enabled = False
       ReadOnly = True
-      TabOrder = 2
+      TabOrder = 1
     end
     object dbedtCafename: TDBEdit
       Left = 96
@@ -212,7 +223,7 @@ object frmUpdatecafe: TfrmUpdatecafe
       Height = 21
       DataField = 'cafename'
       DataSource = dsCafe
-      TabOrder = 3
+      TabOrder = 2
     end
     object dbedtPhone: TDBEdit
       Left = 96
@@ -221,7 +232,7 @@ object frmUpdatecafe: TfrmUpdatecafe
       Height = 21
       DataField = 'phone'
       DataSource = dsCafe
-      TabOrder = 4
+      TabOrder = 3
     end
     object dbedtCafecode: TDBEdit
       Left = 96
@@ -230,6 +241,15 @@ object frmUpdatecafe: TfrmUpdatecafe
       Height = 21
       DataField = 'cafecode'
       DataSource = dsCafe
+      TabOrder = 4
+      Visible = False
+    end
+    object ckbClosed: TCheckBox
+      Left = 96
+      Top = 220
+      Width = 97
+      Height = 17
+      Caption = #50689#50629' '#51473#51648
       TabOrder = 5
     end
   end

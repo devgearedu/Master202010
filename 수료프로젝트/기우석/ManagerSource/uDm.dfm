@@ -1,4 +1,4 @@
-object DM: TDM
+﻿object DM: TDM
   OldCreateOrder = False
   Height = 483
   Width = 779
@@ -12,7 +12,7 @@ object DM: TDM
       'port=211')
     Connected = True
     Left = 80
-    Top = 80
+    Top = 88
     UniqueId = '{B70B8C79-6A7D-40B7-A8A3-AF885C8EDE73}'
   end
   object DSProviderConnection1: TDSProviderConnection
@@ -62,6 +62,17 @@ object DM: TDM
       ProviderFlags = []
       ReadOnly = True
     end
+    object cdsUpdateCafeclosed: TWideStringField
+      FieldName = 'closed'
+      Origin = 'closed'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsUpdateCafeclosed_yn: TWideStringField
+      FieldName = 'closed_yn'
+      ReadOnly = True
+    end
   end
   object SqlServerMethod1: TSqlServerMethod
     Params = <>
@@ -83,8 +94,8 @@ object DM: TDM
     ProviderName = 'DataSetProvider2'
     RemoteServer = DSProviderConnection2
     OnCalcFields = cdsUpdateStaffCalcFields
-    Left = 312
-    Top = 168
+    Left = 320
+    Top = 176
     object cdsUpdateStaffempcode: TWideStringField
       FieldName = 'empcode'
       Origin = 'empcode'
@@ -144,6 +155,18 @@ object DM: TDM
       FieldName = 'position_name'
       Calculated = True
     end
+    object cdsUpdateStaffonwork: TWideStringField
+      FieldName = 'onwork'
+      Origin = 'onwork'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object ㅇㅇㅇㅇㅇ: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'onwork_yn'
+      Calculated = True
+    end
   end
   object DSProviderConnection2: TDSProviderConnection
     ServerClassName = 'TServerMethods1'
@@ -151,5 +174,118 @@ object DM: TDM
     SQLConnection = SQLConnection1
     Left = 200
     Top = 168
+  end
+  object dspSalesTotal: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection1
+    Left = 208
+    Top = 264
+  end
+  object DSProviderConnection4: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection1
+    Left = 208
+    Top = 400
+  end
+  object cdsSalesList: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftWideString
+        Name = 'SDATE'
+        ParamType = ptInput
+        Value = '20201126'
+      end>
+    ProviderName = 'dspSalesList'
+    RemoteServer = DSProviderConnection4
+    Left = 360
+    Top = 400
+  end
+  object cdsSalesTotal: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftWideString
+        Name = 'SDATEFROM'
+        ParamType = ptInput
+        Value = '20201123'
+      end
+      item
+        DataType = ftWideString
+        Name = 'SDATETO'
+        ParamType = ptInput
+        Value = '20201201'
+      end>
+    ProviderName = 'dspSalesTotal'
+    RemoteServer = dspSalesTotal
+    Left = 360
+    Top = 264
+    object cdsSalesTotalsdate: TWideStringField
+      DisplayWidth = 12
+      FieldName = 'sdate'
+      Origin = 'sdate'
+      Required = True
+      OnGetText = cdsSalesTotalsdateGetText
+      Size = 8
+    end
+    object cdsSalesTotalsalesum: TFloatField
+      DisplayWidth = 16
+      FieldName = 'salesum'
+      Origin = 'salesum'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '#,##0'
+    end
+  end
+  object dspSalesTotalByCafe: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection1
+    Left = 208
+    Top = 328
+  end
+  object cdsSalesTotalByCafe: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftWideString
+        Name = 'SDATEFROM'
+        ParamType = ptInput
+        Value = '20201123'
+      end
+      item
+        DataType = ftWideString
+        Name = 'SDATETO'
+        ParamType = ptInput
+        Value = '20201201'
+      end
+      item
+        DataType = ftWideString
+        Name = 'CAFECODE'
+        ParamType = ptInput
+        Value = '01'
+      end>
+    ProviderName = 'dspSalesTotalByCafe'
+    RemoteServer = dspSalesTotalByCafe
+    Left = 368
+    Top = 336
+    object cdsSalesTotalByCafesdate: TWideStringField
+      FieldName = 'sdate'
+      Origin = 'sdate'
+      Required = True
+      OnGetText = cdsSalesTotalByCafesdateGetText
+      Size = 8
+    end
+    object cdsSalesTotalByCafesalesum: TFloatField
+      FieldName = 'salesum'
+      Origin = 'salesum'
+      ProviderFlags = []
+      ReadOnly = True
+      DisplayFormat = '#,##0'
+    end
   end
 end

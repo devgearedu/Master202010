@@ -32,7 +32,25 @@ type
     cdsUpdateCafephone: TWideStringField;
     cdsUpdateCafepposition: TWideStringField;
     cdsUpdateCafesname: TWideStringField;
+    dspSalesTotal: TDSProviderConnection;
+    cdsUpdateStaffonwork: TWideStringField;
+    DSProviderConnection4: TDSProviderConnection;
+    cdsSalesList: TClientDataSet;
+    cdsUpdateCafeclosed: TWideStringField;
+    cdsUpdateCafeclosed_yn: TWideStringField;
+    cdsSalesTotal: TClientDataSet;
+    dspSalesTotalByCafe: TDSProviderConnection;
+    cdsSalesTotalByCafe: TClientDataSet;
+    cdsSalesTotalsdate: TWideStringField;
+    cdsSalesTotalsalesum: TFloatField;
+    cdsSalesTotalByCafesdate: TWideStringField;
+    cdsSalesTotalByCafesalesum: TFloatField;
+    ㅇㅇㅇㅇㅇ: TStringField;
     procedure cdsUpdateStaffCalcFields(DataSet: TDataSet);
+    procedure cdsSalesTotalsdateGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
+    procedure cdsSalesTotalByCafesdateGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -42,11 +60,39 @@ type
 var
   DM: TDM;
 
+  FEMPCODE, FEMPNAME, FCAFECODE: String;
+
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDM.cdsSalesTotalByCafesdateGetText(Sender: TField; var Text: string;
+  DisplayText: Boolean);
+var
+  sDate: string;
+begin
+  sDate := TField(Sender).AsString;
+  Text := Copy(sDate, 1, 4) + '-'
+          + Copy(sDate, 5, 2) + '-'
+          + Copy(sDate, 7, 2);
+
+  DisplayText := True;
+end;
+
+procedure TDM.cdsSalesTotalsdateGetText(Sender: TField; var Text: string;
+  DisplayText: Boolean);
+var
+  sDate: string;
+begin
+  sDate := TField(Sender).AsString;
+  Text := Copy(sDate, 1, 4) + '-'
+          + Copy(sDate, 5, 2) + '-'
+          + Copy(sDate, 7, 2);
+
+  DisplayText := True;
+end;
 
 procedure TDM.cdsUpdateStaffCalcFields(DataSet: TDataSet);
 begin
@@ -56,6 +102,12 @@ begin
     DM.cdsUpdateStaff.FieldByName('position_name').AsString := '점주'
   else
     DM.cdsUpdateStaff.FieldByName('position_name').AsString := '점원';
+
+  if DM.cdsUpdateStaff.FieldByName('onwork').AsString = '1' then
+    DM.cdsUpdateStaff.FieldByName('onwork_yn').AsString := '재직'
+  else if DM.cdsUpdateStaff.FieldByName('onwork').AsString = '0' then
+    DM.cdsUpdateStaff.FieldByName('onwork_yn').AsString := '퇴사';
+
 end;
 
 end.

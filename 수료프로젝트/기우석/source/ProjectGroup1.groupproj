@@ -6,13 +6,13 @@
         <Projects Include="..\ManagerSource\Manager_Project.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\CafeSource\POS_Project.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="..\mobile_source\Mobile_Project.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="..\Server\Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\POSsource\POS_Project.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -32,15 +32,6 @@
     <Target Name="Manager_Project:Make">
         <MSBuild Projects="..\ManagerSource\Manager_Project.dproj" Targets="Make"/>
     </Target>
-    <Target Name="POS_Project">
-        <MSBuild Projects="..\CafeSource\POS_Project.dproj"/>
-    </Target>
-    <Target Name="POS_Project:Clean">
-        <MSBuild Projects="..\CafeSource\POS_Project.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="POS_Project:Make">
-        <MSBuild Projects="..\CafeSource\POS_Project.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Mobile_Project">
         <MSBuild Projects="..\mobile_source\Mobile_Project.dproj"/>
     </Target>
@@ -59,14 +50,23 @@
     <Target Name="Server:Make">
         <MSBuild Projects="..\Server\Server.dproj" Targets="Make"/>
     </Target>
+    <Target Name="POS_Project">
+        <MSBuild Projects="..\POSsource\POS_Project.dproj"/>
+    </Target>
+    <Target Name="POS_Project:Clean">
+        <MSBuild Projects="..\POSsource\POS_Project.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="POS_Project:Make">
+        <MSBuild Projects="..\POSsource\POS_Project.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Manager_Project;POS_Project;Mobile_Project;Server"/>
+        <CallTarget Targets="Manager_Project;Mobile_Project;Server;POS_Project"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Manager_Project:Clean;POS_Project:Clean;Mobile_Project:Clean;Server:Clean"/>
+        <CallTarget Targets="Manager_Project:Clean;Mobile_Project:Clean;Server:Clean;POS_Project:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Manager_Project:Make;POS_Project:Make;Mobile_Project:Make;Server:Make"/>
+        <CallTarget Targets="Manager_Project:Make;Mobile_Project:Make;Server:Make;POS_Project:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
