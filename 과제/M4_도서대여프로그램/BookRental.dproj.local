@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.065,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\BookForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.041,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.079,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\UserForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.677,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.421,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\RentForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.713,C:\delphiproject\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\MainForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.713,C:\delphiproject\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\MainForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.326,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.160,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\DataAccessModule.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.109,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.066,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\BookForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.079,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\UserForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.421,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\RentForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.616,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\FindUserForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.191,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\FindBookForm.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.580,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.616,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\FindUserForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.348,=C:\delphiproject\HomeWork\M4\Source\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.191,C:\delphiproject\HomeWork\M4\Source\Unit1.pas=C:\delphiproject\HomeWork\M4\Source\FindBookForm.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.160,C:\delphiproject\HomeWork\M4\Source\Unit1.dfm=C:\delphiproject\HomeWork\M4\Source\DataAccessModule.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.546,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.649,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.041,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.831,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.527,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.010,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.723,C:\delphiproject\Project1.dproj=C:\delphiproject\HomeWork\M4\Source\BookRental.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.948,=C:\delphiproject\HomeWork\M4\Source\CommonFunctions.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.012,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.513,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.498,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.532,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.297,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.407,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.414,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.362,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.558,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.856,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.693,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.819,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.780,=C:\delphiproject\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
