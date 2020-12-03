@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6903D49C-E336-4E71-AB25-2FA8B6981541}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="LJSCalc.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LJSCalc">
+        <MSBuild Projects="LJSCalc.dproj"/>
+    </Target>
+    <Target Name="LJSCalc:Clean">
+        <MSBuild Projects="LJSCalc.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LJSCalc:Make">
+        <MSBuild Projects="LJSCalc.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LJSCalc"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LJSCalc:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LJSCalc:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

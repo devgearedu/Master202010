@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.532,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.780,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.819,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.297,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.558,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.407,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.414,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.693,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.041,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.362,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.010,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.498,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.513,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.012,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.406,C:\delphiproject\Project1.dproj=C:\delphiproject\HomeWork\M3\StardCalc.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.527,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.831,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.856,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.649,=C:\delphiproject\Unit1.pas</Transaction>
+    <Transaction>2020-10-25 06:41:13.668,C:\delphiproject\HomeWork\M3\StandardCalc.dproj=C:\delphiproject\HomeWork\M3\StardCalc.dproj</Transaction>
+    <Transaction>2020-10-25 06:41:49.132,=C:\delphiproject\HomeWork\M3\Unit1.pas</Transaction>
+    <Transaction>2020-10-25 06:48:44.150,C:\delphiproject\HomeWork\M3\StandardCalcMain.pas=C:\delphiproject\HomeWork\M3\Unit1.pas</Transaction>
+    <Transaction>2020-10-25 06:48:44.150,C:\delphiproject\HomeWork\M3\StandardCalcMain.dfm=C:\delphiproject\HomeWork\M3\Unit1.dfm</Transaction>
+    <Transaction>2020-10-25 07:25:05.722,C:\delphiproject\HomeWork\M3\StandardCalcMain.pas=</Transaction>
+  </Transactions>
+</BorlandProject>
