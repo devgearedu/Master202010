@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2020-11-18 15:22:31.103,=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020-11-18 15:24:04.540,=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020-11-18 15:24:13.263,=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020-11-18 15:28:37.054,C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Umain.pas=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020-11-18 15:28:37.054,C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Umain.dfm=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020-11-18 15:28:50.959,C:\Users\김용규\Documents\Embarcadero\Studio\Projects\CAFEProject.dproj=C:\Users\김용규\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
